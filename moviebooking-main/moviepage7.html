@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Page</title>
+    <link rel="stylesheet" href="moviepage.css" />
+  </head>
+  <body>
+    <div class="container" id="container">
+      <header class="header"></header>
+
+      <div class="movie-details">
+        <div class="poster">
+          <a
+            href="https://youtu.be/BjJcYdEOI0k?si=NqoAyQESTPHsJNjN"
+            target="_blank"
+          >
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="Movie Poster"
+            />
+            <div class="trailer-overlay">
+              <button class="trailer-btn">Trailer</button>
+            </div>
+          </a>
+        </div>
+
+        <div class="movie-info">
+          <h2>The Notebook</h2>
+          <div class="rating-section">
+            <span>⭐ 9/10 (24.9K Votes)</span>
+            <button class="rate-btn" id="rate-btn">Rate now</button>
+          </div>
+          <p>2h 22m • Comedy, Romantic • UA • 25 Aug, 2004</p>
+          <a href="theatres.html">
+            <button class="book-btn">Book tickets</button></a
+          >
+
+          <div class="rating">
+            <input type="radio" id="star5" name="rating" value="5" />
+            <label for="star5" class="star-label">&#9733;</label>
+            <input type="radio" id="star4" name="rating" value="4" />
+            <label for="star4" class="star-label">&#9733;</label>
+            <input type="radio" id="star3" name="rating" value="3" />
+            <label for="star3" class="star-label">&#9733;</label>
+            <input type="radio" id="star2" name="rating" value="2" />
+            <label for="star2" class="star-label">&#9733;</label>
+            <input type="radio" id="star1" name="rating" value="1" />
+            <label for="star1" class="star-label">&#9733;</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="container">
+      <h2>About the movie</h2>
+      <p>
+        The Notebook is a 2004 American romantic drama film directed by Nick
+        Cassavetes, from a screenplay by Jeremy Leven and Jan Sardi, and based
+        on the 1996 novel of the same name by Nicholas Sparks.
+      </p>
+    </div>
+    <div class="container1" id="container1">
+      <div class="card">
+        <div class="stars">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+        </div>
+
+        <div class="infos">
+          <p class="date-time">12 days ago</p>
+          <p class="description">
+            First of all the movie is a must watch and amazing. The storytelling
+            is beautiful and consistent and take the viewer on a nice back and
+            forth journey. When the movie starts the opening scene has a
+            beautiful scenery captured which will take you to a more beautiful
+            journey ahead.
+          </p>
+        </div>
+
+        <div class="author">— Holly Jackson</div>
+      </div>
+
+      <div class="card">
+        <div class="stars">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+        </div>
+
+        <div class="infos">
+          <p class="date-time">10 days ago</p>
+          <p class="description">
+            Absolutely loved this movie. This is one of my feel good movies.
+            Rachel and Ryan's chemistry is awe, their acting was so natural and
+            real. The dialogues in the movie will melt your heart, it is when
+            they meet again, how Noah is not ready to let her go.( i have
+            watched this scene on repeat). The story is interesting from the
+            beginning till the end.
+          </p>
+        </div>
+
+        <div class="author">— Sarah Crawford</div>
+      </div>
+
+      <div class="card">
+        <div class="stars">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+        </div>
+
+        <div class="infos">
+          <p class="date-time">12 days ago</p>
+          <p class="description">
+            First of all the movie is a must watch and amazing. The storytelling
+            is beautiful and consistent and take the viewer on a nice back and
+            forth journey. When the movie starts the opening scene has a
+            beautiful scenery captured which will take you to a more beautiful
+            journey ahead.
+          </p>
+        </div>
+
+        <div class="author">— Holly Jackson</div>
+      </div>
+
+      <div class="card">
+        <div class="stars">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="star"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+        </div>
+
+        <div class="infos">
+          <p class="date-time">12 days ago</p>
+          <p class="description">
+            First of all the movie is a must watch and amazing. The storytelling
+            is beautiful and consistent and take the viewer on a nice back and
+            forth journey. When the movie starts the opening scene has a
+            beautiful scenery captured which will take you to a more beautiful
+            journey ahead.
+          </p>
+        </div>
+
+        <div class="author">— Holly Jackson</div>
+      </div>
+    </div>
+
+    <script src="moviepage.js"></script>
+  </body>
+</html>

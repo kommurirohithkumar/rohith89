@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0px;
+            background-color: #f4f4f4;
+        }
+
+
+        .time-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .time-button {
+            padding: 10px 20px;
+            background-color: #00b383;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+           
+        }
+
+        .time-button:hover {
+            background-color: #008f6b;
+        }
+
+        .seat-container {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .seat {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            background-color: #e0e0e0;
+            border: 1px solid #999;
+            cursor: pointer;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 5px;
+        }
+
+        .seat.selected {
+            background-color: #00b383;
+            color: white;
+        }
+
+        .legend {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .legend div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend .box {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #999;
+        }
+
+        .box.available {
+            background-color: #e0e0e0;
+        }
+
+        .box.selected {
+            background-color: #00b383;
+        }
+
+        .box.sold {
+            background-color: #f44336;
+        }
+
+        .book-button {
+            margin-top: 20px;
+            display: block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .book-button.disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+
+        .seat {
+            width: 30px;
+            height: 30px;
+            background-color: lightgray;
+            margin: 5px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .seat:hover {
+            background-color: #d3d3d3;
+        }
+
+        .spacer1 {
+            width: 80px;
+        }
+
+        .spacer {
+            width: 40px;
+        }
+        .booked {
+            background-color: red;
+            cursor: not-allowed;
+        }
+        .container 
+        {
+            width: 1200%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+.nav-icon img {
+    height: 32px;
+    margin-left: 35px;
+}
+
+.search-bar {
+    flex: 1;
+    margin: 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    
+}
+
+.search-input {
+    width: 700px;
+    padding: 8px 12px 8px 35px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    position: relative;
+    background-image: url('search-icon.svg');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+
+
+.button-container {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 1px;
+    margin-right: 35px;
+    
+}
+
+.button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.icon {
+    font-size: 20px;
+}
+.InputContainer {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    padding-left: 10px; /* Adjusted padding */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+    width: 900px;
+}
+
+/* Styling for the search input */
+.input {
+    flex: 1; /* Makes input field grow to fill available space */
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.9em;
+    padding: 0 10px; /* Space between text and edges */
+    caret-color: rgb(255, 81, 0);
+}
+
+/* Styling for the search icon */
+.searchIcon {
+    width: 20px; /* Adjusted width for better alignment */
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Styling for the microphone icon */
+.micIcon {
+    width: 16px; /* Adjusted width */
+}
+
+/* Button styling for microphone icon */
+.micButton {
+    padding: 0px 15px 0px 12px;
+    border: none;
+    background-color: transparent;
+    height: 40px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+/* Placeholder styling */
+.input::placeholder {
+    color: rgb(114, 114, 114); /* Adjust placeholder color */
+    text-align: left; /* Aligns placeholder text to the right */
+}
+
+/* Hover effect for microphone button */
+.micButton:hover {
+    background-color: rgb(255, 230, 230);
+    transition-duration: 0.3s;
+}
+.Btn {
+    --black: #000000;
+    --ch-black: #141414;
+    --eer-black: #1b1b1b;
+    --white: #ffffff;
+    --af-white: #f3f3f3;
+    --ch-white: #e1e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: var(--night-rider);
+  }
+  
+  /* plus sign */
+  .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sign svg {
+    width: 17px;
+  }
+  
+  .sign svg path {
+    fill: var(--af-white);
+  }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-icon">
+            <img src="movieicon.jpg" alt="Logo" class="logo"> <!-- Replace with your logo image -->
+        </div>
+<div class="InputContainer">
+  <input
+    placeholder="Search Movies.."
+    id="input"
+    class="input"
+    name="text"
+    type="text"
+  />
+
+  <label class="labelforsearch" for="input">
+    <svg class="searchIcon" viewBox="0 0 512 512">
+      <path
+        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+      ></path>
+    </svg>
+  </label>
+</div>
+
+        <div class="button-container">
+            <button class="button">
+                <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"></path>
+                </svg>
+            </button>
+            <button class="button">
+                <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"></path>
+                </svg>
+            </button>
+            <button class="Btn">
+  
+                <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+                
+                <div class="text">Logout</div>
+              </button>
+
+        </div>
+    </nav>
+    <div class="container" >
+    <h2>The Notebook</h2>
+    <h3>INOX: The Marina Mall, OMR | Tomorrow, 26 Aug, 02:15 PM</h3></div>
+    <div class="container">
+<div class="time-buttons">
+    <button class="time-button">06:00 AM</button>
+    <button class="time-button">09:00 AM</button>
+    <button class="time-button">12:15 PM</button>
+    <button class="time-button">02:30 PM</button>
+    <button class="time-button">06:00 PM</button>
+    <button class="time-button">09:00 PM</button>
+</div>
+
+</div>
+<div class="container">
+<div class="seat-container">
+    <div class="section-title">Rs. 150 SOFA</div>
+    <div class="row">
+        <!-- Row A -->
+         <p>A</p>
+        <div class="seat">1</div>
+        <div class="seat booked">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat boooked">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat booked">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row B, C, D -->
+         <p>B</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="spacer"></div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+    </div>
+    <div class="row">
+        <p>C</p>
+        <!-- Row B, C, D -->
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="spacer"></div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+    
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+    </div>
+    <div class="row">
+        <!-- Row B, C, D -->
+         <p>D</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat booked">6</div>
+        <div class="seat">7</div>
+        <div class="spacer"></div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+   
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+    </div>
+
+    <!-- Repeat rows for B, C, D -->
+</div>
+
+<div class="seat-container">
+    <div class="section-title">Rs. 120 First Class</div>
+    <!-- A to K, each with 20 seats -->
+    <div class="row">
+        <!-- Row A -->
+         <p>A</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat booked">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat booked">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>B</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat booked">16</div>
+        <div class="seat booked">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>C</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>D</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat booked">8</div>
+        <div class="seat booked">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>E</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>F</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>G</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>H</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>I</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>J</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>L</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <p>L</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+</div>
+
+<div class="seat-container">
+    <div class="section-title">Rs. 80 Second Class</div>
+    <!-- A to L, each with 20 seats -->
+    <div class="row">
+        <p>M</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <p>N</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <p>O</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+    <div class="row">
+        <!-- Row A -->
+         <p>Q</p>
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat">4</div>
+        <div class="seat booked">5</div>
+        <div class="seat">6</div>
+        <div class="seat">7</div>
+        <div class="seat">8</div>
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="spacer"></div>
+        <div class="seat">11</div>
+        <div class="seat">12</div>
+        <div class="seat">13</div>
+        <div class="seat">14</div>
+        <div class="seat">15</div>
+        <div class="seat">16</div>
+        <div class="seat">17</div>
+        <div class="seat">18</div>
+        <div class="seat">19</div>
+        <div class="seat">20</div>
+    </div>
+</div>
+</div>
+
+<div class="legend">
+    <div><div class="box available"></div> Available</div>
+    <div><div class="box selected"></div> Selected</div>
+    <div><div class="box sold"></div> Sold</div>
+</div>
+
+<a href="cart.html" class="book-button disabled">Book Now</a>
+
+<script>
+    const seats = document.querySelectorAll('.seat');
+    const bookButton = document.querySelector('.book-button');
+    const selectedSeats = [];
+
+    seats.forEach(seat => {
+        seat.addEventListener('click', () => {
+            if (!seat.classList.contains('sold')) {
+                seat.classList.toggle('selected');
+                const seatNumber = seat.textContent;
+                if (selectedSeats.includes(seatNumber)) {
+                    selectedSeats.splice(selectedSeats.indexOf(seatNumber), 1);
+                } else {
+                    selectedSeats.push(seatNumber);
+                }
+
+                bookButton.classList.toggle('disabled', selectedSeats.length === 0);
+            }
+        });
+    });
+
+    bookButton.addEventListener('click', (event) => {
+        if (selectedSeats.length === 0) {
+            event.preventDefault();
+            alert('Please select at least one seat to book.');
+        } else {
+            alert('You have selected seats: ' + selectedSeats.join(', ') + '. Proceed to booking!');
+            // Here you can add code to process the booking
+        }
+    });
+</script>
+
+</body>
+</html>

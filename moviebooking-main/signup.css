@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+body {
+  background-image: url("Old\ Movie\ Background\ Pictures\ Wallpaper\ Image\ For\ Free\ Download\ -\ Pngtree.jpeg");
+}
+
+.form-wrapper {
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-container {
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background: linear-gradient(0deg, rgb(30, 28, 19) 0%, rgb(30, 28, 19) 100%);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  display: block;
+  width: 90%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #4f46e5;
+  outline: none;
+  box-shadow: 6 6 4 2px rgba(79, 70, 229, 0.2);
+}
+
+.gender-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.radio-label {
+  font-size: 14px;
+  color: white;
+}
+
+.form-radio {
+  margin-right: 0.5rem;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  margin-right: 0.5rem;
+}
+
+.checkbox-label {
+  font-size: 14px;
+  color: white;
+}
+
+.submit-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  background-color: #4f46e5;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #4338ca;
+}
+
+.submit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5);
+}

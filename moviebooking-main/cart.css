@@ -1,0 +1,363 @@
+/* Body Styles */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  flex-direction: column;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+  position: fixed; /* Fix the navbar at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure the navbar is above other content */
+}
+
+/* Navbar Icon */
+.nav-icon img {
+  height: 32px;
+  margin-left: 35px;
+}
+
+/* Search Bar */
+.search-bar {
+  flex: 1;
+  margin: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.search-input {
+  width: 700px;
+  padding: 8px 12px 8px 35px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  position: relative;
+  background-image: url('search-icon.svg');
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  padding: 5px;
+  border-radius: 10px;
+  margin-left: 1px;
+  margin-right: 35px;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.icon {
+  font-size: 20px;
+}
+
+/* Centered Content */
+.master-container {
+  margin-top: 70px; /* Prevent overlap with the navbar */
+  display: grid;
+  grid-template-columns: auto;
+  gap: 20px;
+  width: 80%;
+  max-width: 500px;
+}
+
+/* General Card Styles */
+.card {
+  background: #FFFFFF;
+  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 
+              0px 105px 63px rgba(0, 0, 0, 0.05), 
+              0px 47px 47px rgba(0, 0, 0, 0.09), 
+              0px 12px 26px rgba(0, 0, 0, 0.1), 
+              0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Titles */
+.title {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid #efeff3;
+  font-weight: 700;
+  font-size: 16px;
+  color: #63656b;
+}
+
+/* Cart Styles */
+.cart {
+  border-radius: 19px 19px 7px 7px;
+}
+
+.cart .products {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.cart .products .product {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.cart .products .product img {
+  height: 120px;
+  width: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cart .products .product .text {
+  margin-left: 15px;
+  flex-grow: 1;
+}
+
+.cart .products .product .text span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #47484b;
+}
+
+.cart .products .product .text p {
+  font-size: 13px;
+  color: #7a7c81;
+}
+
+.cart .price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #47484b;
+}
+
+/* Coupons */
+.coupons {
+  border-radius: 7px;
+}
+
+.coupons form {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+}
+
+.input_field {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.input_field:focus {
+  border-color: #4480FF;
+  box-shadow: 0 0 0 2px rgba(68, 128, 255, 0.3);
+}
+
+.coupons form button {
+  width: 100px;
+  height: 40px;
+  background: linear-gradient(180deg, #4480FF 0%, #115DFC 50%, #0550ED 100%);
+  border-radius: 5px;
+  border: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Checkout */
+.checkout {
+  border-radius: 9px 9px 19px 19px;
+}
+
+.checkout .details {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 15px;
+  gap: 10px;
+}
+
+.checkout .details .span1 {
+  font-size: 14px;
+  text-align: right;
+}
+
+.checkout .details span {
+  font-size: 14px;
+}
+
+.checkout .details span:nth-child(odd) {
+  color: #707175;
+  font-weight: 700;
+}
+
+.checkout .details span:nth-child(even) {
+  color: #47484b;
+}
+
+.checkout .checkout--footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background-color: #efeff3;
+}
+
+.price {
+  font-size: 24px;
+  color: #2B2B2F;
+  font-weight: 700;
+}
+
+.price sup {
+  font-size: 16px;
+}
+
+.checkout .checkout-btn {
+  background: linear-gradient(180deg, #4480FF 0%, #115DFC 50%, #0550ED 100%);
+  border-radius: 7px;
+  border: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+/* Input Container */
+.InputContainer {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  padding-left: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+  width: 900px;
+}
+
+/* Search Input */
+.input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 0.9em;
+  padding: 0 10px;
+  caret-color: rgb(255, 81, 0);
+}
+
+/* Search Icon */
+.searchIcon {
+  width: 20px;
+  margin-right: 10px;
+}
+
+/* Microphone Icon */
+.micIcon {
+  width: 16px;
+}
+
+/* Microphone Button */
+.micButton {
+  padding: 0px 15px 0px 12px;
+  border: none;
+  background-color: transparent;
+  height: 40px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+/* Placeholder */
+.input::placeholder {
+  color: rgb(114, 114, 114);
+  text-align: left;
+}
+
+/* Microphone Hover */
+.micButton:hover {
+  background-color: rgb(255, 230, 230);
+  transition-duration: 0.3s;
+}
+
+/* Button Styles */
+.Btn {
+  --black: #000000;
+  --ch-black: #141414;
+  --eer-black: #1b1b1b;
+  --white: #ffffff;
+  --af-white: #f3f3f3;
+  --ch-white: #e1e1e1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: var(--night-rider);
+}
+
+/* Plus Sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: var(--af-white);
+}
+body{
+  background-image: url('Old\ Movie\ Background\ Pictures\ Wallpaper\ Image\ For\ Free\ Download\ -\ Pngtree.jpeg');
+}

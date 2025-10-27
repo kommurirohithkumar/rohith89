@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #000; /* Black text */
+        }
+        .ticket-container {
+            display: flex;
+            max-width: 700px;
+            width: 100%;
+            background-color: #333; /* Dark gray for ticket background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            color: #fff; /* White text inside ticket */
+        }
+        .ticket-image {
+            width: 35%;
+            background-size: cover;
+            background-position: center;
+        }
+        .ticket-details {
+            width: 65%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ticket-header h2 {
+            margin: 0;
+            color: white;
+        }
+        .ticket-info {
+            margin: 20px 0;
+        }
+        .ticket-info p {
+            margin: 5px 0;
+        }
+        .qr-code {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .qr-code img {
+            width: 100px;
+            height: 100px;
+        }
+        /* Button styling */
+        .button {
+            line-height: 1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: .75rem;
+            background-color: var(--clr);
+            color: #fff;
+            border-radius: 10rem;
+            font-weight: 600;
+            padding: .75rem 1.5rem;
+            padding-left: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: background-color .3s;
+            margin-top: 20px;
+            --clr: #ff0000; /* Red button color */
+        }
+
+        .button__icon-wrapper {
+            flex-shrink: 0;
+            width: 25px;
+            height: 25px;
+            position: relative;
+            color: var(--clr);
+            background-color: #fff;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .button:hover {
+            background-color: #000; /* Black on hover */
+        }
+
+        .button:hover .button__icon-wrapper {
+            color: #000;
+        }
+
+        .button__icon-svg--copy {
+            position: absolute;
+            transform: translate(-150%, 150%);
+        }
+
+        .button:hover .button__icon-svg:first-child {
+            transition: transform .3s ease-in-out;
+            transform: translate(150%, -150%);
+        }
+
+        .button:hover .button__icon-svg--copy {
+            transition: transform .3s ease-in-out .1s;
+            transform: translate(0);
+        }
+        body{
+            background-image: url(Old\ Movie\ Background\ Pictures\ Wallpaper\ Image\ For\ Free\ Download\ -\ Pngtree.jpeg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="ticket-container">
+    <div class="ticket-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNzc3Mzg1OGYtZjc3My00Y2NhLTgyOWUtYjRhMmI4OTkwNDg4XkEyXkFqcGdeQXVyMTU3NDU4MDg2._V1_.jpg');">
+    </div>
+    <div class="ticket-details">
+        <div class="ticket-header">
+            <h2>Movie Pass</h2>
+            <p>#0301</p>
+        </div>
+        <div class="ticket-info">
+            <p><strong>Date Issued:</strong> 04 August, 2023</p>
+            <p><strong>Show Time:</strong> 8:55 AM</p>
+            <p><strong>Price: </strong> ₹500</p>
+            <p><strong>Seats:</strong> Row A, Seats 12, 13</p>
+        </div>
+        <div class="qr-code">
+            <img src="https://i.pinimg.com/736x/a8/69/40/a86940a4ed8a69539b341f3c414c47b3.jpg" alt="QR Code">
+        </div>
+    </div>
+</div>
+
+<a class="button" href="home.html">
+    <span class="button__icon-wrapper">
+        <svg width="10" class="button__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 15">
+            <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+        </svg>
+        <svg class="button__icon-svg  button__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" width="10" fill="none" viewBox="0 0 14 15">
+            <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+        </svg>
+    </span>
+    Home
+</a>
+
+</body>
+</html>
